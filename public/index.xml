@@ -2,25 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Parthka</title>
-    <link>/</link>
+    <link>//localhost:1313/</link>
     <description>Recent content on Parthka</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>Parthka</copyright>
-    <lastBuildDate>Fri, 03 Oct 2025 14:41:43 +0530</lastBuildDate>
-    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Oct 2025 17:49:42 +0530</lastBuildDate>
+    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Work behind System call!</title>
+      <link>//localhost:1313/posts/system_call/</link>
+      <pubDate>Sat, 04 Oct 2025 17:49:42 +0530</pubDate>
+      <guid>//localhost:1313/posts/system_call/</guid>
+      <description>&lt;h1 id=&#34;understanding-system-calls&#34;&gt;Understanding System Calls&lt;/h1&gt;&#xA;&lt;p&gt;We are developers, and we use computers daily. We do programming on computers and write our code in different languages like Go, Zig, JavaScript, Node.js, etc.&lt;/p&gt;&#xA;&lt;p&gt;We also write code for file handling like open, read, write, and unlink files. We use socket programming for Network I/O, and &lt;code&gt;fork()&lt;/code&gt; to create new child processes, &lt;code&gt;sleep()&lt;/code&gt;, etc. — all of these are &lt;strong&gt;System Calls&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A System Call is an interface — a programming interface used to request resources and services.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>About</title>
-      <link>/about/</link>
+      <link>//localhost:1313/about/</link>
       <pubDate>Fri, 03 Oct 2025 14:41:43 +0530</pubDate>
-      <guid>/about/</guid>
+      <guid>//localhost:1313/about/</guid>
       <description>&lt;p&gt;Hey, I am &lt;strong&gt;Parthka&lt;/strong&gt;, real name is &lt;em&gt;Parth Degama&lt;/em&gt;, I am Computer Nerd, and pro Linux user.&lt;/p&gt;&#xA;&lt;p&gt;Currently i am student of CS/B Tech, live in India.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/pdegama&#34;&gt;My GitHub&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Hello, World!</title>
-      <link>/posts/my-first-post/</link>
+      <link>//localhost:1313/posts/my-first-post/</link>
       <pubDate>Sun, 28 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>/posts/my-first-post/</guid>
+      <guid>//localhost:1313/posts/my-first-post/</guid>
       <description>&lt;p&gt;Hey, I am &lt;strong&gt;Parthka&lt;/strong&gt;, real name is &lt;em&gt;Parth Degama&lt;/em&gt;, I am Computer Nerd, and pro Linux user.&lt;/p&gt;&#xA;&lt;p&gt;Currently i am student of CS/B Tech, live in India.&lt;/p&gt;&#xA;&lt;p&gt;Today i created this website for my blogs, I&amp;rsquo;ll share stuff about Computers, Linux, WebDev, Compiter, and Life.&lt;/p&gt;&#xA;&lt;p&gt;And currently i am learn English so writing blogs is helpful for English practice.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/pdegama&#34;&gt;My GitHub&lt;/a&gt;&lt;/p&gt;</description>
     </item>
   </channel>

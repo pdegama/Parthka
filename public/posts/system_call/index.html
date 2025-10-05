@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  
+    <title>Work behind System call! :: Parthka</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Why we need of System call during File System, I/O, Socket, polling, etc... operations?" />
+<meta name="keywords" content="parthka,parth,degama,computernerd,parthkacomputernerd" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="//localhost:1313/posts/system_call/" />
+
+
+
+
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/main.min.36833afd348409fc6c3d09d0897c5833d9d5bf1ff31f5e60ea3ee42ce2b1268c.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/menu.min.3c17467ebeb3d38663dce68f71f519901124fa5cbb4519b2fb0667a21e9aca39.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/post.min.e6dddd258e64c83e05cec0cd49c05216742d42fc8ecbfbe6b67083412b609bd3.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/syntax.min.a0773cce9310cb6d8ed23e50f005448facf29a53001b57e038828daa466b25c0.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="//localhost:1313/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+<link rel="stylesheet" href="//localhost:1313/terminal.css">
+
+
+
+
+<link rel="shortcut icon" href="//localhost:1313/favicon.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Work behind System call!">
+<meta property="og:description" content="Why we need of System call during File System, I/O, Socket, polling, etc... operations?" />
+<meta property="og:url" content="//localhost:1313/posts/system_call/" />
+<meta property="og:site_name" content="Parthka" />
+
+  
+  
+  <meta property="og:image" content="//localhost:1313/img/system_call.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2025-10-04 17:49:42 &#43;0530 IST" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+
+<div class="container">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Parthka
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="https://github.com/pdegama">GitHub</a></li>
+        
+      
+        
+          <li><a href="https://www.twitch.tv/parthka42">Twitch</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/about" >About</a></li>
+        
+      
+        
+          <li><a href="https://github.com/pdegama" >GitHub</a></li>
+        
+      
+        
+          <li><a href="https://www.twitch.tv/parthka42" >Twitch</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/system_call/">Work behind System call!</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2025-10-04</time></div>
+
+  
+  
+  <img src="//localhost:1313/img/system_call.png"
+    class="post-cover"
+    alt="Work behind System call!"
+    title="Cover Image" />
+
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="understanding-system-calls">Understanding System Calls<a href="#understanding-system-calls" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>We are developers, and we use computers daily. We do programming on computers and write our code in different languages like Go, Zig, JavaScript, Node.js, etc.</p>
+<p>We also write code for file handling like open, read, write, and unlink files. We use socket programming for Network I/O, and <code>fork()</code> to create new child processes, <code>sleep()</code>, etc. — all of these are <strong>System Calls</strong>.</p>
+<blockquote>
+<p>A System Call is an interface — a programming interface used to request resources and services.</p></blockquote>
+<p>Nowadays, we have high-level programming languages like Go, JavaScript (with runtimes like Bun, Node.js), Python, Java, etc. These languages use system calls behind the scenes.<br>
+Low-level programming languages like C and C++ have direct wrappers around system calls such as <code>read()</code>, <code>accept()</code>, <code>unlink()</code>, etc.</p>
+<hr>
+<h2 id="how-it-works">How it works<a href="#how-it-works" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>Most Operating Systems have 2 modes: <strong>Kernel mode</strong> and <strong>User mode</strong>.<br>
+Kernel mode has full privileges, while user mode has limited privileges. We use user mode for daily work — we don’t have permission to directly access hardware; our access is limited. The kernel, however, has full control of the hardware.</p>
+<p>When we need to access hardware, we call the kernel using the <strong>System Call</strong> interface. The kernel then checks whether the user is authorized, has permission, and whether resources are available. After passing all safety checks, it grants permission to access the requested resources or hardware.</p>
+
+
+
+<div class="goat svg-container ">
+  
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      font-family="Menlo,Lucida Console,monospace"
+      
+        viewBox="0 0 880 153"
+      >
+      <g transform='translate(8,16)'>
+<path d='M 104,0 L 216,0' fill='none' stroke='currentColor'></path>
+<path d='M 264,0 L 336,0' fill='none' stroke='currentColor'></path>
+<path d='M 664,0 L 864,0' fill='none' stroke='currentColor'></path>
+<path d='M 216,16 L 256,16' fill='none' stroke='currentColor'></path>
+<path d='M 336,16 L 352,16' fill='none' stroke='currentColor'></path>
+<path d='M 640,16 L 656,16' fill='none' stroke='currentColor'></path>
+<path d='M 104,32 L 216,32' fill='none' stroke='currentColor'></path>
+<path d='M 264,32 L 336,32' fill='none' stroke='currentColor'></path>
+<path d='M 664,32 L 864,32' fill='none' stroke='currentColor'></path>
+<path d='M 416,80 L 584,80' fill='none' stroke='currentColor'></path>
+<path d='M 392,96 L 408,96' fill='none' stroke='currentColor'></path>
+<path d='M 584,96 L 600,96' fill='none' stroke='currentColor'></path>
+<path d='M 416,128 L 584,128' fill='none' stroke='currentColor'></path>
+<path d='M 104,0 L 104,32' fill='none' stroke='currentColor'></path>
+<path d='M 216,0 L 216,16' fill='none' stroke='currentColor'></path>
+<path d='M 216,16 L 216,32' fill='none' stroke='currentColor'></path>
+<path d='M 264,0 L 264,32' fill='none' stroke='currentColor'></path>
+<path d='M 336,0 L 336,16' fill='none' stroke='currentColor'></path>
+<path d='M 336,16 L 336,32' fill='none' stroke='currentColor'></path>
+<path d='M 416,80 L 416,128' fill='none' stroke='currentColor'></path>
+<path d='M 584,80 L 584,96' fill='none' stroke='currentColor'></path>
+<path d='M 584,96 L 584,128' fill='none' stroke='currentColor'></path>
+<path d='M 664,0 L 664,32' fill='none' stroke='currentColor'></path>
+<path d='M 864,0 L 864,32' fill='none' stroke='currentColor'></path>
+<path d='M 600,96 L 640,16' fill='none' stroke='currentColor'></path>
+<path d='M 352,16 L 392,96' fill='none' stroke='currentColor'></path>
+<polygon points='264.000000,16.000000 252.000000,10.400000 252.000000,21.600000' fill='currentColor' transform='rotate(0.000000, 256.000000, 16.000000)'></polygon>
+<polygon points='416.000000,96.000000 404.000000,90.400002 404.000000,101.599998' fill='currentColor' transform='rotate(0.000000, 408.000000, 96.000000)'></polygon>
+<polygon points='664.000000,16.000000 652.000000,10.400000 652.000000,21.600000' fill='currentColor' transform='rotate(0.000000, 656.000000, 16.000000)'></polygon>
+<circle cx='352' cy='16' r='6' stroke='currentColor' fill='currentColor'></circle>
+<circle cx='392' cy='96' r='6' stroke='currentColor' fill='currentColor'></circle>
+<circle cx='600' cy='96' r='6' stroke='currentColor' fill='currentColor'></circle>
+<circle cx='640' cy='16' r='6' stroke='currentColor' fill='currentColor'></circle>
+<text text-anchor='middle' x='0' y='20' fill='currentColor' style='font-size:1em'>U</text>
+<text text-anchor='middle' x='0' y='116' fill='currentColor' style='font-size:1em'>K</text>
+<text text-anchor='middle' x='8' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='8' y='116' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='16' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='16' y='116' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='24' y='20' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='24' y='116' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='32' y='116' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='40' y='20' fill='currentColor' style='font-size:1em'>M</text>
+<text text-anchor='middle' x='40' y='116' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='48' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='56' y='20' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='56' y='116' fill='currentColor' style='font-size:1em'>M</text>
+<text text-anchor='middle' x='64' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='64' y='116' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='72' y='116' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='80' y='116' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='120' y='20' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='128' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='136' y='20' fill='currentColor' style='font-size:1em'>.</text>
+<text text-anchor='middle' x='144' y='20' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='152' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='160' y='20' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='168' y='20' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='176' y='20' fill='currentColor' style='font-size:1em'>F</text>
+<text text-anchor='middle' x='184' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='192' y='20' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='200' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='280' y='20' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='288' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='296' y='20' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='304' y='20' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='312' y='20' fill='currentColor' style='font-size:1em'>(</text>
+<text text-anchor='middle' x='320' y='20' fill='currentColor' style='font-size:1em'>)</text>
+<text text-anchor='middle' x='432' y='100' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='432' y='116' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='440' y='100' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='440' y='116' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='448' y='100' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='448' y='116' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='456' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='464' y='100' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='464' y='116' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='472' y='100' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='472' y='116' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='480' y='100' fill='currentColor' style='font-size:1em'>t</text>
+<text text-anchor='middle' x='480' y='116' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='488' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='488' y='116' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='496' y='116' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='504' y='100' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='504' y='116' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='512' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='512' y='116' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='520' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='528' y='100' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='528' y='116' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='536' y='100' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='536' y='116' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='544' y='100' fill='currentColor' style='font-size:1em'>r</text>
+<text text-anchor='middle' x='544' y='116' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='552' y='100' fill='currentColor' style='font-size:1em'>c</text>
+<text text-anchor='middle' x='552' y='116' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='560' y='100' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='568' y='100' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='680' y='20' fill='currentColor' style='font-size:1em'>R</text>
+<text text-anchor='middle' x='688' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='696' y='20' fill='currentColor' style='font-size:1em'>a</text>
+<text text-anchor='middle' x='704' y='20' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='720' y='20' fill='currentColor' style='font-size:1em'>f</text>
+<text text-anchor='middle' x='728' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='736' y='20' fill='currentColor' style='font-size:1em'>l</text>
+<text text-anchor='middle' x='744' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='760' y='20' fill='currentColor' style='font-size:1em'>u</text>
+<text text-anchor='middle' x='768' y='20' fill='currentColor' style='font-size:1em'>s</text>
+<text text-anchor='middle' x='776' y='20' fill='currentColor' style='font-size:1em'>i</text>
+<text text-anchor='middle' x='784' y='20' fill='currentColor' style='font-size:1em'>n</text>
+<text text-anchor='middle' x='792' y='20' fill='currentColor' style='font-size:1em'>g</text>
+<text text-anchor='middle' x='808' y='20' fill='currentColor' style='font-size:1em'>N</text>
+<text text-anchor='middle' x='816' y='20' fill='currentColor' style='font-size:1em'>o</text>
+<text text-anchor='middle' x='824' y='20' fill='currentColor' style='font-size:1em'>d</text>
+<text text-anchor='middle' x='832' y='20' fill='currentColor' style='font-size:1em'>e</text>
+<text text-anchor='middle' x='840' y='20' fill='currentColor' style='font-size:1em'>J</text>
+<text text-anchor='middle' x='848' y='20' fill='currentColor' style='font-size:1em'>s</text>
+</g>
+
+    </svg>
+  
+</div>
+<p>Here is a simple diagram to understand how a System Call works.</p>
+<p>In this example, when we call <code>fs.readFile()</code> in Node.js, the Node.js runtime (written in C and C++) internally calls the <code>read()</code> system call. The kernel then allocates the required resources or services to read the file.</p>
+<p>I draw simple diagram for understand System Call, it this diagram i use NodeJs Example, when we call <code>fs.readFile()</code> for read file how it work!, NodeJs written in c and c++ when we call <code>fs.readFile()</code> function then NodeJs runtime call <code>read()</code> System Call using c and c++, abalitiy. and kernel allocate resources or services for read file.</p>
+<p>And Operating System have many system such as <code>socket()</code>, <code>mmap2()</code>, <code>fork()</code>, etc&hellip;</p>
+<ul>
+<li><code>socket()</code> use for Network I/O,</li>
+<li><code>mmap2()</code> use to allocate memory for user space.</li>
+<li><code>fork()</code> use to create child process.</li>
+<li>and more.</li>
+</ul>
+<blockquote>
+<p>This is <a href="https://www.chromium.org/chromium-os/developer-library/reference/linux-constants/syscalls/">list</a> of System Calls in linux.</p></blockquote>
+<h3 id="why-do-we-need-system-calls">Why do we need System Calls?<a href="#why-do-we-need-system-calls" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>The Operating System is a complex program that allows us to use a computer.
+It completes many algorithms for task scheduling, memory management, reading and writing data from drives, etc. It has full access to the hardware because it runs in kernel mode. It is the main driver of the computer and is responsible for managing all components.</p>
+<p>If users directly access hardware, it can cause faults in kernel space. Therefore, user programs are not allowed to access hardware directly. Instead, they must request access through the kernel using system calls.</p>
+<p>Before allocating any service or resource, the kernel checks multiple safety levels — such as whether the user is authorized, capable, and whether resources are available.
+This makes hardware access safe and controlled, ensuring only limited and secure access for user programs.</p>
+
+      </div></div>
+
+  
+    
+<div class="pagination">
+  <div class="pagination__title">
+    <span class="pagination__title-h">Read other posts</span>
+    <hr />
+  </div>
+  <div class="pagination__buttons">
+    
+    
+    
+      <a href="//localhost:1313/posts/my-first-post/" class="button inline next">
+         [<span class="button__text">Hello, World!</span>] &gt;
+      </a>
+    
+  </div>
+</div>
+
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>Parthka</span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

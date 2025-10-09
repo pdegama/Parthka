@@ -1,6 +1,9 @@
 +++
 date = '2025-10-04T17:49:42+05:30'
 draft = false
+author = "Parthka"
+tags = ["os", "linux", "systemcall"]
+keywords = ["os", "linux", "systemcall"]
 title = 'Work behind System call!'
 description = "Why we need of System call during File System, I/O, Socket, polling, etc... operations?"
 cover = "/img/system_call.png"

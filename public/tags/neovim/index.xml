@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NeoVim on Parthka</title>
+    <link>//localhost:1313/tags/neovim/</link>
+    <description>Recent content in NeoVim on Parthka</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Parthka</copyright>
+    <lastBuildDate>Wed, 08 Oct 2025 04:36:51 +0530</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/neovim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why NeoVim?</title>
+      <link>//localhost:1313/posts/why_i_use_nvim/</link>
+      <pubDate>Wed, 08 Oct 2025 04:36:51 +0530</pubDate>
+      <guid>//localhost:1313/posts/why_i_use_nvim/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

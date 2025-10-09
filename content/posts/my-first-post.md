@@ -2,7 +2,7 @@
 title = "Hello, World!"
 date = "2025-09-28"
 #dateFormat = "2006-01-02" # This value can be configured for per-post date formatting
-author = ""
+author = "Parthka"
 authorTwitter = "" #do not include @
 cover = ""
 #tags = ["Blog"]

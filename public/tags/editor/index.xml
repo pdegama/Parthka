@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Editor on Parthka</title>
+    <link>//localhost:1313/tags/editor/</link>
+    <description>Recent content in Editor on Parthka</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>Parthka</copyright>
+    <lastBuildDate>Tue, 14 Oct 2025 04:36:51 +0530</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/editor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NeoVim Vs Other Text Editor!</title>
+      <link>//localhost:1313/posts/why_i_use_nvim/</link>
+      <pubDate>Tue, 14 Oct 2025 04:36:51 +0530</pubDate>
+      <guid>//localhost:1313/posts/why_i_use_nvim/</guid>
+      <description>&lt;p&gt;When i use &lt;strong&gt;bspwn&lt;/strong&gt; with &lt;strong&gt;Arch Linux&lt;/strong&gt; first time i also start to using &lt;strong&gt;Nvim/NeoVim&lt;/strong&gt;. Before NeoVim i use many vscode and other text editors like atom (now dead), Bracket, etc.&lt;/p&gt;&#xA;&lt;p&gt;Learing NeoVim is defficul&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

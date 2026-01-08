@@ -2,7 +2,7 @@
 date = '2025-10-14T04:36:51+05:30'
 draft = false
 title = 'NeoVim Vs Other Text Editor!'
-auther = "Parthka"
+author = "Parthka"
 description = "Why i use NeoVim as my primary Editor?"
 tags = ["nvim", "NeoVim", "editor", "vim"]
 keywords = ["nvim", "NeoVim", "editor", "vscode", "vim", "chromium"]

@@ -1,15 +1,15 @@
 +++
-date = '2026-08-01T17:49:42+05:30'
+date = '2026-01-08T15:04:07+05:30'
 draft = false
-author = ["Parthka", "Sahid"]
-tags = ["Mailtro", "tmpmail", "SMTP", "RabbitMQ", "Docker"]
-keywords = ["Mailtro", "tmpmail", "SMTP", "RabbitMQ", "Docker"]
-title = 'TmpMail – Mailtro'
-description = "We built Mailtro, a temporary email service, as a collaborative side project. This post covers our system design, real-time email delivery, and the architectural choices we made along the way."
-cover = "/img/system_call.png"
+author ="Parthka"
+tags = ["MailTro", "tmpmail", "SMTP", "RabbitMQ", "Docker"]
+keywords = ["MailTro", "tmpmail", "SMTP", "RabbitMQ", "Docker"]
+title = 'TmpMail – MailTro'
+description = "We built MailTro, a temporary email service, as a collaborative side project. This post covers our system design, real-time email delivery, and the architectural choices we made along the way."
+cover = "/img/1767507509809.jpg"
 +++
 
-A few days ago, my friend **@sahid** and I started working on a temporary email service called **[Mailtro](https://mailtro.site/)**. What began as a side project quickly turned into a serious learning experience—and it also became my **first collaborative project**.
+A few days ago, my friend **[Sahid](http://sahidmidda.site/)** and I started working on a temporary email service called **[MailTro](https://MailTro.site/)**. What began as a side project quickly turned into a serious learning experience—and it also became my **first collaborative project**.
 
 Soon after launching, many people—especially colleagues at my office and members of my Discord groups—started asking how temporary email services actually work. The most common question was:
 
@@ -17,7 +17,7 @@ Soon after launching, many people—especially colleagues at my office and membe
 
 ---
 
-## How Mailtro Works (High-Level Overview)
+## How MailTro Works (High-Level Overview)
 
 Yes, we use **SMTP**, but not a third-party service. We built our **own custom SMTP server**, called **[Box](https://github.com/pdegama/box)**, written in **Go**. Its responsibility is intentionally minimal:
 
@@ -28,6 +28,9 @@ From there, all processing is handled by our backend system.
 
 Our **backend is built with Bun**, and the **frontend uses Next.js**  
 (yes, we know the frontend needs improvement—and it’s already on our roadmap).
+
+---
+![MailTro Architecture](/img/tmpmail-arch.jpg)
 
 ---
 
@@ -98,7 +101,7 @@ Combined with a constrained UI interaction surface, this approach:
 
 ## Seamless Login & Email Lifecycle
 
-Mailtro uses a **seamless login experience**:
+MailTro uses a **seamless login experience**:
 
 - On first visit (or after 15 days), a new temporary email address is generated
 - If the user returns within the valid window, we restore the existing mailbox
@@ -114,11 +117,11 @@ We’re planning to add a feature that allows users to **extend the lifetime of 
 
 ## Domains & Customization
 
-Currently, Mailtro supports **three domains** for temporary email addresses.  
+Currently, MailTro supports **three domains** for temporary email addresses.  
 Users can:
 
 - Shuffle email addresses
-- Customize the username before the `@domain`
+- Customize the username before the `@<domain>`
 
 ---
 
@@ -137,5 +140,5 @@ Improving email rendering consistency and accessibility is a high priority.
 
 ## Special Thanks
 
-A special thanks to **@tanuj** for reporting a significant delay when receiving emails from Gmail.  
+A special thanks to **[Sahil Kapdia](https://www.linkedin.com/in/sahil-kapadia-079b04142/)** and **[Tanuj Patra](https://www.linkedin.com/in/tanujpatra/)** for reporting a significant delay when receiving emails from Gmail.  
 The issue turned out to be a **DNS configuration problem**, which has now been resolved.

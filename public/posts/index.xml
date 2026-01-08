@@ -5,16 +5,23 @@
     <link>//localhost:1313/posts/</link>
     <description>Recent content in Posts on Parthka</description>
     <generator>Hugo</generator>
-    <language>en</language>
+    <language>en-us</language>
     <copyright>Parthka</copyright>
-    <lastBuildDate>Tue, 14 Oct 2025 04:36:51 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 08 Jan 2026 15:04:07 +0530</lastBuildDate>
     <atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TmpMail – MailTro</title>
+      <link>//localhost:1313/posts/mailtro/</link>
+      <pubDate>Thu, 08 Jan 2026 15:04:07 +0530</pubDate>
+      <guid>//localhost:1313/posts/mailtro/</guid>
+      <description>&lt;p&gt;A few days ago, my friend &lt;strong&gt;&lt;a href=&#34;http://sahidmidda.site/&#34;&gt;Sahid&lt;/a&gt;&lt;/strong&gt; and I started working on a temporary email service called &lt;strong&gt;&lt;a href=&#34;https://MailTro.site/&#34;&gt;MailTro&lt;/a&gt;&lt;/strong&gt;. What began as a side project quickly turned into a serious learning experience—and it also became my &lt;strong&gt;first collaborative project&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Soon after launching, many people—especially colleagues at my office and members of my Discord groups—started asking how temporary email services actually work. The most common question was:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;em&gt;How does an email get received and displayed inside a tmpmail app?&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>NeoVim Vs Other Text Editor!</title>
       <link>//localhost:1313/posts/why_i_use_nvim/</link>
       <pubDate>Tue, 14 Oct 2025 04:36:51 +0530</pubDate>
       <guid>//localhost:1313/posts/why_i_use_nvim/</guid>
-      <description>&lt;p&gt;hello&lt;/p&gt;</description>
+      <description>&lt;p&gt;When I used &lt;strong&gt;bspwm&lt;/strong&gt; with &lt;strong&gt;Arch Linux&lt;/strong&gt; for the first time, I also started using &lt;strong&gt;Neovim&lt;/strong&gt;.&lt;br&gt;&#xA;Before Neovim, I used many editors like VS Code and others such as Atom (now dead), Brackets, etc.&lt;/p&gt;&#xA;&lt;p&gt;Learning Neovim is difficult at the beginning. I mostly write &lt;strong&gt;C language&lt;/strong&gt; code. After some time, I forgot the VS Code and other IDE keymaps. When I used another editor and needed to save a file, I pressed &lt;code&gt;&amp;lt;ESC&amp;gt;:w&lt;/code&gt; in VS Code—but it didn’t work.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Linux Vs BSD</title>

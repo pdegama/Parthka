@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on Parthka</title>
+    <link>//localhost:1313/tags/docker/</link>
+    <description>Recent content in Docker on Parthka</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>Parthka</copyright>
+    <lastBuildDate>Thu, 08 Jan 2026 15:04:07 +0530</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TmpMail – MailTro</title>
+      <link>//localhost:1313/posts/mailtro/</link>
+      <pubDate>Thu, 08 Jan 2026 15:04:07 +0530</pubDate>
+      <guid>//localhost:1313/posts/mailtro/</guid>
+      <description>&lt;p&gt;A few days ago, my friend &lt;strong&gt;&lt;a href=&#34;http://sahidmidda.site/&#34;&gt;Sahid&lt;/a&gt;&lt;/strong&gt; and I started working on a temporary email service called &lt;strong&gt;&lt;a href=&#34;https://MailTro.site/&#34;&gt;MailTro&lt;/a&gt;&lt;/strong&gt;. What began as a side project quickly turned into a serious learning experience—and it also became my &lt;strong&gt;first collaborative project&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Soon after launching, many people—especially colleagues at my office and members of my Discord groups—started asking how temporary email services actually work. The most common question was:&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;em&gt;How does an email get received and displayed inside a tmpmail app?&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

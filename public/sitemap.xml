@@ -2,7 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/tags/editore/</loc>
+    <loc>//localhost:1313/tags/docker/</loc>
+    <lastmod>2026-01-08T15:04:07+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/mailtro/</loc>
+    <lastmod>2026-01-08T15:04:07+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/</loc>
+    <lastmod>2026-01-08T15:04:07+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/</loc>
+    <lastmod>2026-01-08T15:04:07+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/rabbitmq/</loc>
+    <lastmod>2026-01-08T15:04:07+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/smtp/</loc>
+    <lastmod>2026-01-08T15:04:07+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/</loc>
+    <lastmod>2026-01-08T15:04:07+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/tmpmail/</loc>
+    <lastmod>2026-01-08T15:04:07+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/mailtro/</loc>
+    <lastmod>2026-01-08T15:04:07+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/editor/</loc>
     <lastmod>2025-10-14T04:36:51+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/neovim/</loc>
@@ -12,15 +39,6 @@
     <lastmod>2025-10-14T04:36:51+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/nvim/</loc>
-    <lastmod>2025-10-14T04:36:51+05:30</lastmod>
-  </url><url>
-    <loc>//localhost:1313/</loc>
-    <lastmod>2025-10-14T04:36:51+05:30</lastmod>
-  </url><url>
-    <loc>//localhost:1313/posts/</loc>
-    <lastmod>2025-10-14T04:36:51+05:30</lastmod>
-  </url><url>
-    <loc>//localhost:1313/tags/</loc>
     <lastmod>2025-10-14T04:36:51+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/vim/</loc>
